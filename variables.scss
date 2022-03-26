@@ -1,0 +1,39 @@
+$main-color: #ff5722;
+$accent-color: #ecc30c;
+
+$white-color: #ffffff;
+$dark-color: #1f1f1f;
+$backdrop-color: #1f1f1fd3;
+$shadow-color: #68686898;
+
+$main-font: "Lato", sans-serif;
+$headers-font: "Bebas Neue";
+
+$screen-sm-min: 0px;
+$screen-md-min: 668px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
+@mixin sm {
+   @media (min-width: #{$screen-sm-min}) {
+      @content;
+   }
+}
+
+@mixin md {
+   @media (min-width: #{$screen-md-min}) {
+      @content;
+   }
+}
+
+@mixin lg {
+   @media (min-width: #{$screen-lg-min}) {
+      @content;
+   }
+}
+
+@mixin xl {
+   @media (min-width: #{$screen-xl-min}) {
+      @content;
+   }
+}
