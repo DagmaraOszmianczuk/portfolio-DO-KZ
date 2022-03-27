@@ -1,29 +1,20 @@
 import * as React from "react"
-import { graphql } from "gatsby"
 import "./index.scss"
 import "./../../style.scss"
 import Navbar from "../components/navbar/navbar"
+import Footer from "../components/footer/footer"
+import Main from "../components/main/main"
+import About from "../components/about/about"
 
 const IndexPage = (props) => {
-   console.log(props.data)
    return (
       <main>
-         <Navbar person={props.data.allContentfulGeneral.nodes[0].person} />
-         <div className="container">
-            <p>Main page</p>
-         </div>
+         <Navbar />
+         <Main />
+         <About />
+         <Footer />
       </main>
    )
 }
-
-export const pageQuery = graphql`
-   query HeaderQuery {
-      allContentfulGeneral {
-         nodes {
-            person
-         }
-      }
-   }
-`
 
 export default IndexPage

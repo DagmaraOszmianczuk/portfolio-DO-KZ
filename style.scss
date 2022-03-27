@@ -34,6 +34,15 @@ button {
 }
 
 // Responsywność
+html {
+   @include sm {
+      font-size: 12px;
+   }
+
+   @include md {
+      font-size: 16px;
+   }
+}
 
 .container {
    @include sm {
@@ -50,7 +59,7 @@ button {
       max-width: 950px;
    }
 
-   @include lg {
+   @include xl {
       max-width: 1150px;
    }
 }

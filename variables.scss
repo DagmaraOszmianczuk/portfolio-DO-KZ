@@ -1,5 +1,5 @@
-$main-color: #ff5722;
-$accent-color: #ecc30c;
+$main-color: #fb5c2b;
+$accent-color: #e9b635;
 
 $white-color: #ffffff;
 $dark-color: #1f1f1f;
@@ -13,6 +13,8 @@ $screen-sm-min: 0px;
 $screen-md-min: 668px;
 $screen-lg-min: 992px;
 $screen-xl-min: 1200px;
+
+$navbar-height: 5rem;
 
 @mixin sm {
    @media (min-width: #{$screen-sm-min}) {

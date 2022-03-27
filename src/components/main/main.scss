@@ -1,0 +1,47 @@
+@import "../../../variables.scss";
+
+section.main {
+   width: 100%;
+   background-image: url("../../images/bg/main.png");
+   background-position: center center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   height: calc(100vh - $navbar-height);
+
+   .container {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-bottom: 2.5rem;
+
+      h1 {
+         margin-bottom: 1rem;
+         position: relative;
+
+         @include sm {
+            font-size: 4rem;
+         }
+
+         @include md {
+            font-size: 5rem;
+         }
+
+         &::after {
+            content: "";
+            width: 28rem;
+            height: 4px;
+            background-color: $main-color;
+            position: absolute;
+            bottom: -0.3rem;
+            left: 50%;
+            transform: translateX(-50%);
+         }
+      }
+
+      .description {
+         font-size: 1.5rem;
+      }
+   }
+}
