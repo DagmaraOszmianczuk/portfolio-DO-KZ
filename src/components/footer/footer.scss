@@ -2,8 +2,11 @@
 
 footer {
    width: 100%;
-   padding: 3rem;
+   height: $footer-height;
    position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
    background-color: $dark-color;
 
    p {

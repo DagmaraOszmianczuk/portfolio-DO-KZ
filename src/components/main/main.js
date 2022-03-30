@@ -1,17 +1,17 @@
 import { useStaticQuery, graphql } from "gatsby"
-import { renderRichText } from "gatsby-source-contentful/rich-text"
+import { getValueFromGeneral } from "../../util"
 import React from "react"
 import "./main.scss"
 
 const Main = () => {
    const data = useStaticQuery(graphql`
       query MainQuery {
-         allContentfulGeneral {
+         allContentfulGeneral(filter: { title: { in: ["Person", "PersonDescription"] } }) {
             nodes {
-               person
-               description {
-                  raw
+               childContentfulGeneralValueTextNode {
+                  value
                }
+               title
             }
          }
       }
@@ -20,8 +20,8 @@ const Main = () => {
    return (
       <section className="main">
          <div className="container">
-            <h1>{data.allContentfulGeneral.nodes[0].person}</h1>
-            <div className="description">{renderRichText(data.allContentfulGeneral.nodes[0].description)}</div>
+            <h1>{getValueFromGeneral(data, "Person")}</h1>
+            <div className="description">{getValueFromGeneral(data, "PersonDescription")}</div>
          </div>
       </section>
    )

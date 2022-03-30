@@ -1,21 +1,11 @@
 import React, { useRef } from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
 import "./navbar.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars } from "@fortawesome/free-solid-svg-icons"
 
-const Navbar = () => {
-   const data = useStaticQuery(graphql`
-      query HeaderQuery {
-         allContentfulGeneral {
-            nodes {
-               person
-            }
-         }
-      }
-   `)
-
+const Navbar = ({ person }) => {
    const drawer = useRef(null)
 
    const toggleDrawer = () => {
@@ -26,23 +16,31 @@ const Navbar = () => {
    return (
       <nav className="navbar">
          <div className="container">
-            <h2>{data.allContentfulGeneral.nodes[0].person}</h2>
+            <h2>{person}</h2>
             <div className="links">
                <button onClick={toggleDrawer}>
                   <FontAwesomeIcon icon={faBars} />
                </button>
                <ul ref={drawer} className="hidden">
-                  <li className="current">
-                     <Link to="/images">O mnie</Link>
+                  <li>
+                     <Link to="/" activeClassName="active">
+                        Home
+                     </Link>
                   </li>
                   <li>
-                     <Link to="/images">Portfolio</Link>
+                     <Link to="/photos" activeClassName="active">
+                        Portfolio
+                     </Link>
                   </li>
                   <li>
-                     <Link to="/images">Oferta</Link>
+                     <Link to="/images" activeClassName="active">
+                        Oferta
+                     </Link>
                   </li>
                   <li>
-                     <Link to="/images">Kontakt</Link>
+                     <Link to="/images" activeClassName="active">
+                        Kontakt
+                     </Link>
                   </li>
                </ul>
             </div>

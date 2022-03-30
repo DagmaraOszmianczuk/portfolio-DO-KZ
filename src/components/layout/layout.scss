@@ -1,0 +1,7 @@
+@import "../../../variables.scss";
+
+.page-content {
+   min-height: calc(100vh - $navbar-height - $footer-height);
+   width: 100%;
+   overflow: hidden;
+}

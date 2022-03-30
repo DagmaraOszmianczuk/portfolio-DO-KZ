@@ -52,7 +52,7 @@ nav.navbar {
                align-items: center;
                cursor: pointer;
 
-               &.current,
+               &.active,
                &:hover {
                   background-color: $main-color;
                   a {
