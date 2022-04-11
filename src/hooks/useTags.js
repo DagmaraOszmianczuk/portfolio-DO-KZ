@@ -19,9 +19,7 @@ const useTags = (nodes) => {
    const toggleActive = useCallback((id) => {
       const copy = [...tagList]
 
-      console.log("toggle")
-      //   Kliknięto na tag inny niż "Wszystko"
-      if (id != 0) {
+      if (id !== 0) {
          copy[0].active = false
          copy[id].active = !copy[id].active
       } else {

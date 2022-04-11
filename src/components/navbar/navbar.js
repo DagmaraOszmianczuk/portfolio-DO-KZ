@@ -21,28 +21,20 @@ const Navbar = ({ person }) => {
                <button onClick={toggleDrawer}>
                   <FontAwesomeIcon icon={faBars} />
                </button>
-               <ul ref={drawer} className="hidden">
-                  <li>
-                     <Link to="/" activeClassName="active">
-                        Home
-                     </Link>
-                  </li>
-                  <li>
-                     <Link to="/photos" activeClassName="active">
-                        Portfolio
-                     </Link>
-                  </li>
-                  <li>
-                     <Link to="/images" activeClassName="active">
-                        Oferta
-                     </Link>
-                  </li>
-                  <li>
-                     <Link to="/images" activeClassName="active">
-                        Kontakt
-                     </Link>
-                  </li>
-               </ul>
+               <div ref={drawer} className="hidden">
+                  <Link to="/" activeClassName="active">
+                     Home
+                  </Link>
+                  <Link to="/photos" activeClassName="active">
+                     Portfolio
+                  </Link>
+                  <Link to="/images" activeClassName="active">
+                     Oferta
+                  </Link>
+                  <Link to="/images" activeClassName="active">
+                     Kontakt
+                  </Link>
+               </div>
             </div>
          </div>
       </nav>

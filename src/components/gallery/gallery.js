@@ -9,11 +9,12 @@ const Gallery = (props) => {
       query getGalleryData {
          allContentfulImages {
             nodes {
+               id
                title
                tags
                description
                image {
-                  gatsbyImageData(layout: FIXED, width: 800)
+                  gatsbyImageData(layout: FIXED, width: 1000)
                   id
                }
             }
@@ -28,7 +29,8 @@ const Gallery = (props) => {
    `)
 
    const [tags, toggleTag, getActiveTags] = useTags(data.allContentfulImagesTags.nodes)
-   const [galleryIsOpen, setGalleryIsOpen] = useState(true)
+   const [galleryIsOpen, setGalleryIsOpen] = useState(false)
+   const [currentPhoto, setCurrentPhoto] = useState(0)
 
    return (
       <section className="gallery">
@@ -54,11 +56,18 @@ const Gallery = (props) => {
                </ul>
             </div>
             <div className="content">
-               {data.allContentfulImages.nodes.map((node) => {
+               {data.allContentfulImages.nodes.map((node, index) => {
                   if (tags[0].active || getActiveTags().includes(...node.tags)) {
                      return (
-                        <div className="img-wrapper" onClick={() => setGalleryIsOpen(true)}>
-                           <img src={node.image.gatsbyImageData.images.fallback.src} alt="im" key={node.image.id} />
+                        <div
+                           className="img-wrapper"
+                           onClick={() => {
+                              setGalleryIsOpen(true)
+                              setCurrentPhoto(index)
+                           }}
+                           key={node.id}
+                        >
+                           <img src={node.image.gatsbyImageData.images.fallback.src} alt={node.title} />
                            <div className="img-description">
                               <h1>{node.title}</h1>
                               <p>{node.description}</p>
@@ -75,6 +84,8 @@ const Gallery = (props) => {
             isOpen={galleryIsOpen}
             setIsOpen={setGalleryIsOpen}
             images={data.allContentfulImages.nodes}
+            currentPhoto={currentPhoto}
+            setCurrentPhoto={setCurrentPhoto}
          />
       </section>
    )
