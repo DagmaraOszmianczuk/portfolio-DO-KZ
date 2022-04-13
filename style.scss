@@ -36,6 +36,8 @@ button {
 
 // Responsywność
 html {
+   scroll-behavior: smooth;
+
    @include sm {
       font-size: 12px;
    }

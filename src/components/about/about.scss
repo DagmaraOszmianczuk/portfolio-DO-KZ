@@ -7,7 +7,9 @@ section.about {
    .container {
       display: flex;
       padding: 3rem 0;
+      padding-bottom: 5rem;
       align-items: center;
+      justify-content: space-between;
 
       p,
       h2,
@@ -30,6 +32,14 @@ section.about {
          flex-direction: column;
          width: 1fr;
 
+         @include sm {
+            padding: 0rem 3rem;
+         }
+         @include md {
+            padding: 0;
+            padding-right: 3rem;
+         }
+
          .img-wrapper {
             width: 15rem;
             height: 15rem;
@@ -49,6 +59,7 @@ section.about {
          h2 {
             position: relative;
             padding-bottom: 0.5rem;
+            font-size: 2rem;
 
             &::after {
                content: "";
@@ -64,13 +75,18 @@ section.about {
          }
 
          p {
-            padding: 1rem 2.5rem;
+            text-align: justify;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
          }
       }
 
       ul {
          width: 2fr;
          list-style-type: none;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
 
          li {
             display: flex;

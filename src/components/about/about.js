@@ -36,7 +36,7 @@ const About = () => {
    `)
 
    return (
-      <section className="about">
+      <section className="about" id="about">
          <div className="container">
             <div className="person">
                <div className="img-wrapper">

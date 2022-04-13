@@ -3,6 +3,7 @@ import "./gallery.scss"
 import { useStaticQuery, graphql } from "gatsby"
 import useTags from "../../hooks/useTags"
 import GalleryFullScreen from "../galleryFullScreen/galleryFullScreen"
+import { getValueFromGeneral } from "../../util"
 
 const Gallery = (props) => {
    const data = useStaticQuery(graphql`
@@ -25,6 +26,14 @@ const Gallery = (props) => {
                id
             }
          }
+         allContentfulGeneral(filter: { title: { in: ["PortfolioDescription"] } }) {
+            nodes {
+               childContentfulGeneralValueTextNode {
+                  value
+               }
+               title
+            }
+         }
       }
    `)
 
@@ -37,10 +46,7 @@ const Gallery = (props) => {
          <div className="container">
             <div className="header">
                <h2>Portfolio</h2>
-               <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem odit consequuntur voluptatem
-                  laudantium mollitia ipsam
-               </p>
+               <p>{getValueFromGeneral(data, "PortfolioDescription")}</p>
                <ul>
                   {tags.map((node) => {
                      return (

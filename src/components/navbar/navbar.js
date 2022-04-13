@@ -28,12 +28,15 @@ const Navbar = ({ person }) => {
                   <Link to="/photos" activeClassName="active">
                      Portfolio
                   </Link>
-                  <Link to="/images" activeClassName="active">
+                  <a href="#about" onClick={toggleDrawer}>
+                     O mnie
+                  </a>
+                  <a href="#offer" onClick={toggleDrawer}>
                      Oferta
-                  </Link>
-                  <Link to="/images" activeClassName="active">
+                  </a>
+                  <a href="#contact" onClick={toggleDrawer}>
                      Kontakt
-                  </Link>
+                  </a>
                </div>
             </div>
          </div>

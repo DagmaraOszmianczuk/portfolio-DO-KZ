@@ -52,6 +52,7 @@ nav.navbar {
                display: flex;
                align-items: center;
                cursor: pointer;
+               white-space: nowrap;
 
                height: 100%;
                padding: 2.5rem;
