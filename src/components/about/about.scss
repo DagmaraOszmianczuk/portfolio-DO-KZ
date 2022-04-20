@@ -104,9 +104,9 @@ section.about {
                margin-right: 2rem;
                margin-top: 0.4rem;
 
-               svg {
-                  font-size: 2.5rem;
-                  color: $white-color;
+               img {
+                  width: 2.5rem;
+                  filter: invert(100%);
                }
             }
 

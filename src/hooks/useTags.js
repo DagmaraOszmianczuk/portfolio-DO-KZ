@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react"
+import { useCallback, useState } from "react"
 
 const useTags = (nodes) => {
    const initData = [
@@ -16,23 +16,26 @@ const useTags = (nodes) => {
 
    const [tagList, setTagList] = useState(initData)
 
-   const toggleActive = useCallback((id) => {
-      const copy = [...tagList]
+   const toggleActive = useCallback(
+      (id) => {
+         const copy = [...tagList]
 
-      if (id !== 0) {
-         copy[0].active = false
-         copy[id].active = !copy[id].active
-      } else {
-         copy.forEach((tag) => (tag.active = false))
-         copy[0].active = true
-      }
+         if (id !== 0) {
+            copy[0].active = false
+            copy[id].active = !copy[id].active
+         } else {
+            copy.forEach((tag) => (tag.active = false))
+            copy[0].active = true
+         }
 
-      setTagList(copy)
-   }, [])
+         setTagList(copy)
+      },
+      [tagList]
+   )
 
    const getActiveTags = useCallback(() => {
       return tagList.map((tag) => tag.active && tag.name).filter((item) => item)
-   })
+   }, [tagList])
 
    return [tagList, toggleActive, getActiveTags]
 }

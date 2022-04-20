@@ -1,8 +1,6 @@
 import React from "react"
 import "./about.scss"
 import { useStaticQuery, graphql } from "gatsby"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faDisplay } from "@fortawesome/free-solid-svg-icons"
 import { getValueFromGeneral } from "../../util"
 
 const About = () => {
@@ -49,7 +47,7 @@ const About = () => {
                {data.allContentfulAbout.nodes.map((node, index) => (
                   <li key={index}>
                      <div className="icon-wrapper">
-                        <FontAwesomeIcon icon={faDisplay} />
+                        <img src={node.icon.gatsbyImageData.images.fallback.src} alt="icon" />
                      </div>
                      <div className="content">
                         <h2>{node.title}</h2>

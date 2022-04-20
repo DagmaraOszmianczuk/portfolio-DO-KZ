@@ -67,6 +67,8 @@ const Gallery = (props) => {
                      return (
                         <div
                            className="img-wrapper"
+                           role="button"
+                           tabIndex={index}
                            onClick={() => {
                               setGalleryIsOpen(true)
                               setCurrentPhoto(index)

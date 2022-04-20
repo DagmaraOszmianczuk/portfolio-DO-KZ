@@ -1,8 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby"
 import React from "react"
 import "./offer.scss"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faDisplay } from "@fortawesome/free-solid-svg-icons"
 
 const Offer = () => {
    const data = useStaticQuery(graphql`
@@ -14,6 +12,10 @@ const Offer = () => {
                   description
                }
                list
+               icon {
+                  gatsbyImageData(width: 500)
+                  id
+               }
             }
          }
       }
@@ -32,7 +34,7 @@ const Offer = () => {
                {data.allContentfulOffer.nodes.map((node, index) => (
                   <li key={index}>
                      <div className="icon-wrapper">
-                        <FontAwesomeIcon icon={faDisplay} />
+                        <img src={node.icon.gatsbyImageData.images.fallback.src} alt="icon" />
                      </div>
                      <div className="content">
                         <h3>{node.title}</h3>
