@@ -28,7 +28,15 @@ const Navbar = ({ person }) => {
                   <Link to="/photos" activeClassName="active">
                      Portfolio
                   </Link>
-                  <Link to="/offer">Oferta</Link>
+                  <a href="#about" onClick={toggleDrawer}>
+                     O mnie
+                  </a>
+                  <a href="#offer" onClick={toggleDrawer}>
+                     Oferta
+                  </a>
+                  <a href="#contact" onClick={toggleDrawer}>
+                     Kontakt
+                  </a>
                </div>
             </div>
          </div>
