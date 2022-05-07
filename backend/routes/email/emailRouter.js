@@ -28,7 +28,7 @@ emailRouter.post("/", (req, res) => {
    let errorCode = null
 
    // Validate data
-   if (!/^\S+@\S+\.\S+$/.test(from)) {
+   if (!from || !/^\S+@\S+\.\S+$/.test(from)) {
       errors.push({
          type: "email",
          msg: "Niepoprawny adres email",
@@ -36,44 +36,46 @@ emailRouter.post("/", (req, res) => {
       errorCode = 400
    }
 
-   if (title.length < 4) {
+   if (!title || title.length < 4 || title.length > 32) {
       errors.push({
          type: "title",
-         msg: "Tytuł powinien mieć przynajmniej 4 znaki",
+         msg: "Tytuł powinien mieć długość z przedziału od 4 do 32 znaków",
       })
       errorCode = 400
    }
 
-   if (content.length < 16) {
+   if (!content || content.length < 16 || content.length > 8000) {
       errors.push({
          type: "content",
-         msg: "Treść powinna mieć przynajmniej 16 znaków",
+         msg: "Treść powinna mieć długość z przedziału od 16 do 8000 znaków",
       })
       errorCode = 400
    }
 
-   const template = handlebars.compile(templateSource)
-   const html = template({
-      from,
-      title,
-      content,
-   })
+   if (errors.length == 0) {
+      const template = handlebars.compile(templateSource)
+      const html = template({
+         from,
+         title,
+         content,
+      })
 
-   transporter.sendMail(generateMailOptions(from, title, html), (error) => {
-      if (error) {
-         errors.push({
-            type: "general",
-            msg: "Wystąpił błąd serwera",
-         })
-         errorCode = 500
-      }
-   })
-
-   if (errors.length > 0) {
-      res.status(errorCode).json(errors)
+      transporter.sendMail(generateMailOptions(from, title, html), (error) => {
+         if (error) {
+            errors.push({
+               type: "general",
+               msg: "Wystąpił błąd serwera",
+            })
+            errorCode = 500
+         }
+      })
    }
 
-   res.status(200).json({
+   if (errors.length > 0) {
+      return res.status(errorCode).json(errors)
+   }
+
+   return res.status(200).json({
       msg: "Wiadomość została pomyślnie wysłana",
    })
 })

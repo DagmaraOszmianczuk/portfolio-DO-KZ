@@ -46,6 +46,10 @@ button {
    border: none;
 }
 
+textarea {
+   font-family: $main-font;
+}
+
 // Responsywność
 html {
    scroll-behavior: smooth;

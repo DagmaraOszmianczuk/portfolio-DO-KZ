@@ -2,6 +2,7 @@
 
 section.contact {
    background-color: $backdrop-color;
+   min-height: calc(100vh - $footer-height);
 
    .container {
       padding: 4rem 0;
@@ -45,6 +46,46 @@ section.contact {
          span {
             color: $white-color;
             margin-right: 0.5rem;
+         }
+      }
+
+      form {
+         display: flex;
+         flex-direction: column;
+         width: 100%;
+         margin-top: 1.5rem;
+
+         button {
+            align-self: flex-end;
+            padding: 1rem 3.5rem;
+            background-color: $main-color;
+            color: $white-color;
+            transform: all 200ms ease-in;
+
+            &:disabled {
+               background-color: $light-gray-color;
+               color: $shadow-color;
+            }
+         }
+
+         div.success {
+            display: flex;
+            flex-direction: row;
+            background-color: $accent-color;
+            color: $dark-color;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+
+            p {
+               margin: 0;
+               color: $dark-color;
+            }
+
+            svg {
+               padding: 0.5rem;
+               cursor: pointer;
+            }
          }
       }
    }
