@@ -1,0 +1,47 @@
+$main-color: #fb5c2b;
+$accent-color: #f8bd29;
+$accent-color-transparent: #f8bd29df;
+
+$error-color: #c02d2d;
+$light-error-color: #ff6c6c;
+
+$white-color: #ffffff;
+$dark-color: #1f1f1f;
+$light-gray-color: #f0eae6;
+$backdrop-color: #1f1f1fde;
+$shadow-color: #68686898;
+
+$main-font: "Lato", sans-serif;
+$headers-font: "Bebas Neue";
+
+$screen-sm-min: 0px;
+$screen-md-min: 668px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
+$navbar-height: 5rem;
+$footer-height: 8rem;
+
+@mixin sm {
+   @media (min-width: #{$screen-sm-min}) {
+      @content;
+   }
+}
+
+@mixin md {
+   @media (min-width: #{$screen-md-min}) {
+      @content;
+   }
+}
+
+@mixin lg {
+   @media (min-width: #{$screen-lg-min}) {
+      @content;
+   }
+}
+
+@mixin xl {
+   @media (min-width: #{$screen-xl-min}) {
+      @content;
+   }
+}
